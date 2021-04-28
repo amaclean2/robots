@@ -7,6 +7,6 @@ button = Button(2)
 while True :
     if (button.is_active) :
         led.on()
-    else
+    else :
         led.off()
     sleep(0.01)
