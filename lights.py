@@ -9,3 +9,4 @@ while True :
     sleep(1)
     led.off()
     print("Off")
+    sleep(1)
