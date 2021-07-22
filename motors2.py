@@ -20,7 +20,7 @@ sleep(2)
 # running the esc at 6 different speeds
 for speed in range(6) :
     pi.set_servo_pulsewidth(ESC_GPIO, speed * 1000 / 7 + 1000)
-    print("testing speed " + speed)
+    print("testing speed ", speed)
     sleep(2)
 
 # shutting everything down
