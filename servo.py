@@ -54,6 +54,7 @@ else :
 
     servo.ChangeDutyCycle(7)
     sleep(0.5)
+    servo.ChangeDutyCycle(0)
 
 servo.stop()
 GPIO.cleanup()
