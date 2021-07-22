@@ -26,9 +26,9 @@ if calibrate == 1 :
     print("calibrate_lo")
     sleep(2)
 
-pi.set_servo_pulsewidth(ESC_GPIO, 2 * 1000 / 7 + 1000)
-print("testing speed ", 2)
-sleep(1)
+pi.set_servo_pulsewidth(ESC_GPIO, 3 * 1000 / 7 + 1000)
+print("testing speed ", 3)
+sleep(2)
 
 # shutting everything down
 pi.set_servo_pulsewidth(ESC_GPIO, 0)
