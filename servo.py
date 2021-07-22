@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import argparse
 from time import sleep
 
 GPIO.setmode(GPIO.BOARD)
@@ -9,29 +10,50 @@ SEREVO_GPIO = 11
 GPIO.setup(SEREVO_GPIO, GPIO.OUT)
 servo = GPIO.PWM(SEREVO_GPIO, 50)
 
-servo.start(0)
-print("waiting")
-sleep(2)
+parser = argparse.ArgumentParser()
 
-print("rotating")
+parser.add_argument("--test", help="set the calibration mode of the esc")
+args = parser.parse_args()
 
-duty = 2
-
-while duty <= 12 :
-    servo.ChangeDutyCycle(duty)
+if args.test == "test" :
+    servo.start(0)
+    print("waiting")
     sleep(2)
-    duty += 1
 
-sleep(2)
+    print("rotating")
 
-print("turning back to 90")
-servo.ChangeDutyCycle(7)
-sleep(2)
+    duty = 2
 
-print("turning back to 0")
-servo.ChangeDutyCycle(2)
-sleep(0.5)
-servo.ChangeDutyCycle(0)
+
+    while duty <= 12 :
+        servo.ChangeDutyCycle(duty)
+        sleep(2)
+        duty += 1
+
+    sleep(2)
+
+    print("turning back to 90")
+    servo.ChangeDutyCycle(7)
+    sleep(2)
+
+    print("turning back to 0")
+    servo.ChangeDutyCycle(2)
+    sleep(0.5)
+    servo.ChangeDutyCycle(0)
+
+else :
+    servo.start(0)
+    servo.ChangeDutyCycle(7)
+    sleep(1)
+
+    servo.ChangeDutyCycle(8)
+    sleep(1)
+
+    servo.ChangeDutyCycle(6)
+    sleep(1)
+
+    servo.ChangeDutyCycle(7)
+    sleep(0.5)
 
 servo.stop()
 GPIO.cleanup()
