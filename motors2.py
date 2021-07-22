@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import pigpio
+import sys
 from time import sleep
 
 GPIO.setmode(GPIO.BCM)
@@ -9,13 +10,18 @@ pi = pigpio.pi()
 
 ESC_GPIO = 13
 
-# calibrating the ESC
-pi.set_servo_pulsewidth(ESC_GPIO, 2000)
-print("calibrate_hi")
-sleep(2)
-pi.set_servo_pulsewidth(ESC_GPIO, 1000)
-print("calibrate_lo")
-sleep(2)
+if __name__ == "__main__" :
+    calibrate = int(sys.argv[1])
+    print(calibrate)
+
+if False :
+    # calibrating the ESC
+    pi.set_servo_pulsewidth(ESC_GPIO, 2000)
+    print("calibrate_hi")
+    sleep(2)
+    pi.set_servo_pulsewidth(ESC_GPIO, 1000)
+    print("calibrate_lo")
+    sleep(2)
 
 # running the esc at 6 different speeds
 for speed in range(6) :
