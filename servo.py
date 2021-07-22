@@ -46,10 +46,10 @@ else :
     servo.ChangeDutyCycle(7)
     sleep(1)
 
-    servo.ChangeDutyCycle(8)
+    servo.ChangeDutyCycle(8.5)
     sleep(1)
 
-    servo.ChangeDutyCycle(6)
+    servo.ChangeDutyCycle(5.5)
     sleep(1)
 
     servo.ChangeDutyCycle(7)
