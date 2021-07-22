@@ -17,7 +17,7 @@ args = parser.parse_args()
 
 print("calibrate ", args.calibrate)
 
-if args.calibrate == "1" :
+if args.calibrate == "c" :
     # calibrating the ESC
     pi.set_servo_pulsewidth(ESC_GPIO, 2000)
     print("calibrate_hi")
@@ -26,7 +26,7 @@ if args.calibrate == "1" :
     print("calibrate_lo")
     sleep(2)
 
-elif args.calibrate == "2" :
+elif args.calibrate == "t" :
     for speed in range(6) :
         pi.set_servo_pulsewidth(ESC_GPIO, speed * 1000 / 7 + 1000)
         print("running speed: ", speed * 1000 / 7 + 1000)
