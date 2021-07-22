@@ -10,14 +10,14 @@ pi = pigpio.pi()
 
 ESC_GPIO = 13
 
-if __name__ == "__main__" :
-    print(len(sys.argv))
-    if len(sys.argv) > 1 :
-        calibrate = int(sys.argv[1])
-        
-print(calibrate)
+calibrate = 0
 
-if False :
+if __name__ == "__main__" and len(sys.argv) > 1 :
+    calibrate = int(sys.argv[1])
+
+print("calibrate ", calibrate)
+
+if calibrate == 1 :
     # calibrating the ESC
     pi.set_servo_pulsewidth(ESC_GPIO, 2000)
     print("calibrate_hi")
