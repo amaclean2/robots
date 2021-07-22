@@ -26,6 +26,14 @@ if calibrate == 1 :
     print("calibrate_lo")
     sleep(2)
 
+if calibrate == 2 :
+    for speed in range(6) :
+        pi.set_servo_pulsewidth(ESC_GPIO, speed * 1000 / 7 + 1000)
+        print("running speed: ", speed * 1000 / 7 + 1000)
+        sleep(2)
+        pi.set_servo_pulsewidth(ESC_GPIO, 0)
+        sleep(1)
+
 if calibrate == 0 :
     speed = 3.8
     pi.set_servo_pulsewidth(ESC_GPIO, speed * 1000 / 7 + 1000)
