@@ -35,9 +35,11 @@ elif args.calibrate == "t" :
         sleep(1)
 
 else :
-    speed = 3.8
+    speed = 3.0
     pi.set_servo_pulsewidth(ESC_GPIO, speed * 1000 / 7 + 1000)
     print("testing speed: ", speed)
+    sleep(2)
+    pi.set_servo_pulsewidth(ESC_GPIO, 0)
     sleep(2)
     pi.set_servo_pulsewidth(ESC_GPIO, speed * 1000 / 7 + 1000)
     print("testing speed: ", speed)
