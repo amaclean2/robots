@@ -44,13 +44,19 @@ if args.test == "test" :
 else :
     servo.start(0)
     servo.ChangeDutyCycle(7)
-    sleep(1)
+    sleep(0.3)
+    servo.ChangeDutyCycle(0)
+    sleep(0.7)
 
     servo.ChangeDutyCycle(8.5)
-    sleep(1)
+    sleep(0.3)
+    servo.ChangeDutyCycle(0)
+    sleep(0.7)
 
     servo.ChangeDutyCycle(5.5)
-    sleep(1)
+    sleep(0.3)
+    servo.ChangeDutyCycle(0)
+    sleep(0.7)
 
     servo.ChangeDutyCycle(7)
     sleep(0.5)
