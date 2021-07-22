@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import pigpio
-import sys
+import argparse
 from time import sleep
 
 GPIO.setmode(GPIO.BCM)
@@ -10,14 +10,14 @@ pi = pigpio.pi()
 
 ESC_GPIO = 13
 
-calibrate = 0
+parser = argparse.ArgumentParser()
 
-if __name__ == "__main__" and len(sys.argv) > 1 :
-    calibrate = int(sys.argv[1])
+parser.add_argument("--calibrate", help="set the calibration mode of the esc")
+args = parser.parse_args()
 
-print("calibrate ", calibrate)
+print("calibrate ", args.calibrate)
 
-if calibrate == 1 :
+if args.calibrate == 1 :
     # calibrating the ESC
     pi.set_servo_pulsewidth(ESC_GPIO, 2000)
     print("calibrate_hi")
@@ -26,7 +26,7 @@ if calibrate == 1 :
     print("calibrate_lo")
     sleep(2)
 
-if calibrate == 2 :
+elif args.calibrate == 2 :
     for speed in range(6) :
         pi.set_servo_pulsewidth(ESC_GPIO, speed * 1000 / 7 + 1000)
         print("running speed: ", speed * 1000 / 7 + 1000)
@@ -34,7 +34,7 @@ if calibrate == 2 :
         pi.set_servo_pulsewidth(ESC_GPIO, 0)
         sleep(1)
 
-if calibrate == 0 :
+else :
     speed = 3.8
     pi.set_servo_pulsewidth(ESC_GPIO, speed * 1000 / 7 + 1000)
     print("testing speed: ", speed)
@@ -46,4 +46,4 @@ if calibrate == 0 :
 # shutting everything down
 pi.set_servo_pulsewidth(ESC_GPIO, 0)
 pi.stop()
-print("goodbye")
+print("done")
