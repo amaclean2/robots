@@ -26,11 +26,9 @@ if calibrate == 1 :
     print("calibrate_lo")
     sleep(2)
 
-# running the esc at 6 different speeds
-for speed in range(6) :
-    pi.set_servo_pulsewidth(ESC_GPIO, speed * 1000 / 7 + 1000)
-    print("testing speed ", speed)
-    sleep(2)
+pi.set_servo_pulsewidth(ESC_GPIO, 2 * 1000 / 7 + 1000)
+print("testing speed ", 2)
+sleep(1)
 
 # shutting everything down
 pi.set_servo_pulsewidth(ESC_GPIO, 0)
