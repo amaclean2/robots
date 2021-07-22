@@ -46,3 +46,4 @@ if calibrate == 0 :
 # shutting everything down
 pi.set_servo_pulsewidth(ESC_GPIO, 0)
 pi.stop()
+print("goodbye")
