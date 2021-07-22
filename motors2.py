@@ -14,7 +14,8 @@ if __name__ == "__main__" :
     print(len(sys.argv))
     if len(sys.argv) > 1 :
         calibrate = int(sys.argv[1])
-        print(calibrate)
+        
+print(calibrate)
 
 if False :
     # calibrating the ESC
